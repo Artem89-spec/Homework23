@@ -35,6 +35,10 @@ public class StorageService {
         return results;
     }
 
+    public Optional<Product> getProductById(UUID id) {
+        return Optional.ofNullable(productsMap.get(id));
+    }
+
     private void createData() {
         List<Product> testProducts = Arrays.asList(
                 new DiscountedProduct("Мышь проводная", 1000, 5),

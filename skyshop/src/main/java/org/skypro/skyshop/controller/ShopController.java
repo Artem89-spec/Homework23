@@ -3,6 +3,7 @@ package org.skypro.skyshop.controller;
 import org.skypro.skyshop.model.article.Article;
 import org.skypro.skyshop.model.basket.UserBasket;
 import org.skypro.skyshop.model.basket.ProductBasket;
+import org.skypro.skyshop.model.exception.NoSuchProductException;
 import org.skypro.skyshop.model.product.Product;
 import org.skypro.skyshop.model.search.SearchResult;
 import org.skypro.skyshop.service.SearchService;
@@ -54,7 +55,7 @@ public class ShopController {
             productBasket.addProducts(id);
             return "Продукт успешно добавлен";
         } else {
-            return "Продукт не найден";
+            throw new NoSuchProductException(id.toString());
         }
     }
 

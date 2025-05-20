@@ -1,14 +1,14 @@
 package org.skypro.skyshop.model.exception;
 
 public class NoSuchProductException extends RuntimeException {
-    private final String searchQuery;
+    private final String productId;
 
-    public NoSuchProductException(String searchQuery) {
-        this.searchQuery = searchQuery;
+    public NoSuchProductException(String productId) {
+        this.productId = productId;
     }
 
     @Override
     public String getMessage() {
-        return "Для указанного поискового запроса { " + searchQuery + " } не найдено подходящей категории товара.";
+        return "Для указанного поискового запроса { " + productId + " } не найдено подходящей категории товара.";
     }
 }

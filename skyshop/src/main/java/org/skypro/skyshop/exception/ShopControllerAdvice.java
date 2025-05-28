@@ -1,4 +1,4 @@
-package org.skypro.skyshop.model.exception;
+package org.skypro.skyshop.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

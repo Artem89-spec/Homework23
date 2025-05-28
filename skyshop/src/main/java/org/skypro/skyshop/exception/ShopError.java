@@ -1,4 +1,4 @@
-package org.skypro.skyshop.model.exception;
+package org.skypro.skyshop.exception;
 
 public final class ShopError {
     private final String code;

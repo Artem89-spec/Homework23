@@ -1,11 +1,11 @@
 package org.skypro.skyshop.service;
 
-import org.skypro.skyshop.model.article.Article;
-import org.skypro.skyshop.model.product.DiscountedProduct;
-import org.skypro.skyshop.model.product.FixPriceProduct;
-import org.skypro.skyshop.model.product.Product;
-import org.skypro.skyshop.model.product.SimpleProduct;
-import org.skypro.skyshop.model.search.Searchable;
+import org.skypro.skyshop.article.Article;
+import org.skypro.skyshop.product.DiscountedProduct;
+import org.skypro.skyshop.product.FixPriceProduct;
+import org.skypro.skyshop.product.Product;
+import org.skypro.skyshop.product.SimpleProduct;
+import org.skypro.skyshop.search.Searchable;
 import org.springframework.stereotype.Service;
 
 import java.util.*;

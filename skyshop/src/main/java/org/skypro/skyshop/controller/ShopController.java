@@ -50,13 +50,8 @@ public class ShopController {
 
     @GetMapping("/basket/{id}")
     public String addProduct(@PathVariable("id") UUID id) {
-        Optional<Product> product = storageService.getProductById(id);
-        if (product.isPresent()) {
-            productBasket.addProducts(id);
-            return "Продукт успешно добавлен";
-        } else {
-            throw new NoSuchProductException(id.toString());
-        }
+        basketService.addProduct(id);
+        return "Продукт успешно добавлен";
     }
 
     @GetMapping("/basket")

@@ -25,8 +25,7 @@ public class BasketService {
         if (id == null) {
             throw new IllegalArgumentException("UUID не может быть пустым");
         }
-        if (storageService.getProductById(id).isEmpty())
-            throw new NoSuchProductException(id.toString());
+        Product product = storageService.getProductByIdOrThrow(id);
         productBasket.addProducts(id);
     }
 
@@ -35,8 +34,7 @@ public class BasketService {
                 .map(entry -> {
                     UUID id = entry.getKey();
                     int numberOfProducts = entry.getValue();
-                    Product product = storageService.getProductById(id)
-                            .orElseThrow(() -> new NoSuchProductException(id.toString()));
+                    Product product = storageService.getProductByIdOrThrow(id);
                     return new BasketItem(product, numberOfProducts);
                 })
                 .toList();

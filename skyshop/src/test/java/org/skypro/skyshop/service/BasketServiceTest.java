@@ -35,11 +35,11 @@ public class BasketServiceTest {
     public void testAdd_NonExistentProductThrowsAnException() {
         UUID falseId = UUID.randomUUID();
 
-        when(storageServiceMock.getProductById(falseId)).thenReturn(Optional.empty());
+        when(storageServiceMock.getProductByIdOrThrow(falseId)).thenThrow(new NoSuchProductException(falseId.toString()));
 
         assertThrows(NoSuchProductException.class, () -> basketService.addProduct(falseId));
 
-        verify(storageServiceMock).getProductById(falseId);
+        verify(storageServiceMock).getProductByIdOrThrow(falseId);
         verifyNoInteractions(productBasketMock);
     }
 
@@ -52,12 +52,12 @@ public class BasketServiceTest {
 
         Product mockProduct = mock(Product.class);
 
-        when(storageServiceMock.getProductById(productId)).thenReturn(Optional.of(mockProduct));
+        when(storageServiceMock.getProductByIdOrThrow(productId)).thenReturn(mockProduct);
 
         basketService.addProduct(productId);
 
         verify(productBasketMock).addProducts(productId);
-        verify(storageServiceMock).getProductById(productId);
+        verify(storageServiceMock).getProductByIdOrThrow(productId);
     }
 
     /**
@@ -85,7 +85,7 @@ public class BasketServiceTest {
         Product mockProduct = mock(Product.class);
         when(mockProduct.getPrice()).thenReturn(100.00);
 
-        when(storageServiceMock.getProductById(productId)).thenReturn(Optional.of(mockProduct));
+        when(storageServiceMock.getProductByIdOrThrow(productId)).thenReturn(mockProduct);
 
         UserBasket basket = basketService.getUserBasket();
 
